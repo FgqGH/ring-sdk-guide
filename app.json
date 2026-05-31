@@ -1,0 +1,8 @@
+{
+  "pages": [
+    "pages/demo/demo"
+  ],
+  "window": {
+    "navigationBarTitleText": "RingSDK Demo"
+  }
+}

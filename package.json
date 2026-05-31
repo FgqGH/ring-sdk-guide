@@ -1,0 +1,12 @@
+{
+  "name": "ring-sdk-guide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RingSDK 接入示例 — 微信小程序 Demo",
+  "scripts": {
+    "postinstall": "echo '请在微信开发者工具中点击 工具 → 构建 npm'"
+  },
+  "dependencies": {
+    "ring-sdk": "github:FgqGH/ring-sdk"
+  }
+}

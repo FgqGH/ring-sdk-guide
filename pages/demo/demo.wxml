@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="status">状态: {{state}}</view>
+  <view class="data-row" wx:if="{{battery}}">电量: {{battery.level}}%</view>
+  <view class="data-row" wx:if="{{heartRate}}">心率: {{heartRate}} bpm</view>
+  <view class="data-row" wx:if="{{bloodPressure}}">
+    血压: {{bloodPressure.systolic}} / {{bloodPressure.diastolic}}
+  </view>
+
+  <button wx:if="{{!connected}}" bindtap="handleConnect">连接戒指</button>
+  <view wx:else class="actions">
+    <button bindtap="handleHeartRate">测心率</button>
+    <button bindtap="handleBloodPressure">测血压</button>
+    <button bindtap="handleDisconnect">断开</button>
+  </view>
+</view>
