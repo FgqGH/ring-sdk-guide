@@ -36,8 +36,8 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.3.0",
-  "appid": "wx72edef168e7646bb",
+  "libVersion": "3.16.1",
+  "appid": "wx34a0e47d33e95252",
   "projectname": "ring-sdk-guide",
   "condition": {},
   "simulatorPluginLibVersion": {},

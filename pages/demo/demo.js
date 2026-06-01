@@ -7,13 +7,9 @@
 //   3. 将 project.config.json 中的 appid 改为你的真实 AppID
 // ============================================================
 
-import { RingSDK, BLE_CMD, HEALTH_MEASURE_TYPE, parseRealtimeHr, packCommand } from 'ring-sdk'
+import { RingSDK, BLE_CMD, HEALTH_MEASURE_TYPE, parseRealtimeHr, packCommand } from '../../utils/ring-sdk.esm.js'
 
-// ⚠️ 替换为你的 License Key 和 License 服务器地址
-const RING = new RingSDK({
-  licenseKey: 'YOUR_LICENSE_KEY',
-  licenseServerUrl: 'https://your-server.com/v1/sdk/verify',
-})
+const RING = new RingSDK({ licenseKey: 'demo' })
 
 Page({
   data: {
