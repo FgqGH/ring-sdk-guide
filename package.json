@@ -7,6 +7,6 @@
     "postinstall": "echo '请在微信开发者工具中点击 工具 → 构建 npm'"
   },
   "dependencies": {
-    "ring-sdk": "github:FgqGH/ring-sdk"
+    "ring-sdk": "file:../../SDK/ring-sdk"
   }
 }

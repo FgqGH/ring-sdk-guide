@@ -1,0 +1,22 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      ring-sdk:
+        specifier: file:../../SDK/ring-sdk
+        version: ring-ble-sdk@file:../../SDK/ring-sdk
+
+packages:
+
+  ring-ble-sdk@file:../../SDK/ring-sdk:
+    resolution: {directory: ../../SDK/ring-sdk, type: directory}
+
+snapshots:
+
+  ring-ble-sdk@file:../../SDK/ring-sdk: {}

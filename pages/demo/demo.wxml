@@ -1,15 +1,63 @@
 <view class="container">
+  <!-- 状态栏 -->
   <view class="status">状态: {{state}}</view>
-  <view class="data-row" wx:if="{{battery}}">电量: {{battery.level}}%</view>
-  <view class="data-row" wx:if="{{heartRate}}">心率: {{heartRate}} bpm</view>
-  <view class="data-row" wx:if="{{bloodPressure}}">
-    血压: {{bloodPressure.systolic}} / {{bloodPressure.diastolic}}
+
+  <!-- 实时心率（流式） -->
+  <view class="data-row realtime" wx:if="{{realtimeHrRunning || realtimeHr}}">
+    <text class="label">实时心率</text>
+    <text class="value">{{realtimeHr || '—'}} bpm</text>
+    <text class="hint" wx:if="{{realtimeHrRunning}}">● 采集中</text>
   </view>
 
-  <button wx:if="{{!connected}}" bindtap="handleConnect">连接戒指</button>
-  <view wx:else class="actions">
-    <button bindtap="handleHeartRate">测心率</button>
-    <button bindtap="handleBloodPressure">测血压</button>
-    <button bindtap="handleDisconnect">断开</button>
+  <!-- 单次测量结果 -->
+  <view class="data-card" wx:if="{{battery}}">
+    <text class="label">电量</text>
+    <text class="value">{{battery.level}}%{{battery.isCharging ? ' ⚡' : ''}}</text>
+  </view>
+  <view class="data-card" wx:if="{{heartRate}}">
+    <text class="label">心率</text>
+    <text class="value">{{heartRate}} bpm</text>
+  </view>
+  <view class="data-card" wx:if="{{bloodPressure}}">
+    <text class="label">血压</text>
+    <text class="value">{{bloodPressure.systolic}} / {{bloodPressure.diastolic}}</text>
+    <text class="sub">脉搏 {{bloodPressure.heartRate}} bpm</text>
+  </view>
+  <view class="data-card" wx:if="{{spo2}}">
+    <text class="label">血氧</text>
+    <text class="value" wx:if="{{spo2.spo2}}">{{spo2.spo2}}%</text>
+    <text class="value" wx:else>{{spo2.heartRate}} bpm (心率)</text>
+  </view>
+  <view class="data-card" wx:if="{{hrv}}">
+    <text class="label">HRV</text>
+    <text class="value">{{hrv.hrv}} ms</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions">
+    <button wx:if="{{!connected}}" type="primary" bindtap="handleConnect">连接戒指</button>
+
+    <block wx:else>
+      <view class="section-title">基础</view>
+      <view class="btn-row">
+        <button size="mini" bindtap="handleBattery">读电量</button>
+        <button size="mini" bindtap="handleHeartRate">测心率</button>
+        <button size="mini" bindtap="handleSpo2">测血氧</button>
+        <button size="mini" bindtap="handleBloodPressure">测血压</button>
+        <button size="mini" bindtap="handleHrv">测HRV</button>
+      </view>
+
+      <view class="section-title">实时心率</view>
+      <view class="btn-row">
+        <button size="mini" type="warn" wx:if="{{!realtimeHrRunning}}" bindtap="handleStartRealtimeHR">
+          启动
+        </button>
+        <button size="mini" wx:else bindtap="handleStopRealtimeHR">停止</button>
+      </view>
+
+      <view class="section-title" style="margin-top: 30rpx;">
+        <button size="mini" type="default" bindtap="handleDisconnect">断开连接</button>
+      </view>
+    </block>
   </view>
 </view>
