@@ -32,19 +32,34 @@
     <text class="label">HRV</text>
     <text class="value">{{hrv.hrv}} ms</text>
   </view>
+  <view class="data-card" wx:if="{{stress}}">
+    <text class="label">压力</text>
+    <text class="value">{{stress.stress}}</text>
+  </view>
+
+  <!-- 批量数据摘要 -->
+  <view class="data-card" wx:if="{{sleepSummary}}">
+    <text class="label">睡眠</text>
+    <text class="value" style="font-size: 26rpx;">{{sleepSummary}}</text>
+  </view>
+  <view class="data-card" wx:if="{{activitySummary}}">
+    <text class="label">运动</text>
+    <text class="value" style="font-size: 26rpx;">{{activitySummary}}</text>
+  </view>
 
   <!-- 操作按钮 -->
   <view class="actions">
     <button wx:if="{{!connected}}" type="primary" bindtap="handleConnect">连接戒指</button>
 
     <block wx:else>
-      <view class="section-title">基础</view>
+      <view class="section-title">单次测量</view>
       <view class="btn-row">
-        <button size="mini" bindtap="handleBattery">读电量</button>
-        <button size="mini" bindtap="handleHeartRate">测心率</button>
-        <button size="mini" bindtap="handleSpo2">测血氧</button>
-        <button size="mini" bindtap="handleBloodPressure">测血压</button>
-        <button size="mini" bindtap="handleHrv">测HRV</button>
+        <button size="mini" bindtap="handleBattery">电量</button>
+        <button size="mini" bindtap="handleHeartRate">心率</button>
+        <button size="mini" bindtap="handleSpo2">血氧</button>
+        <button size="mini" bindtap="handleBloodPressure">血压</button>
+        <button size="mini" bindtap="handleHrv">HRV</button>
+        <button size="mini" bindtap="handleStress">压力</button>
       </view>
 
       <view class="section-title">实时心率</view>
@@ -53,6 +68,18 @@
           启动
         </button>
         <button size="mini" wx:else bindtap="handleStopRealtimeHR">停止</button>
+      </view>
+
+      <view class="section-title">批量读取</view>
+      <view class="btn-row">
+        <button size="mini" bindtap="handleSleep">昨晚睡眠</button>
+        <button size="mini" bindtap="handleActivity">今日运动</button>
+      </view>
+
+      <view class="section-title">自定义指令</view>
+      <view class="raw-row">
+        <input class="raw-input" maxlength="32" placeholder="16字节HEX (32字符)" value="{{rawHex}}" bindinput="onRawInput"/>
+        <button size="mini" bindtap="handleSendRaw">发送</button>
       </view>
 
       <view class="section-title" style="margin-top: 30rpx;">

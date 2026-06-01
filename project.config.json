@@ -1,6 +1,9 @@
 {
   "description": "RingSDK 接入示例",
-  "packOptions": { "ignore": [] },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -13,11 +16,30 @@
     "autoAudits": false,
     "checkInvalidKey": true,
     "checkSiteMap": true,
-    "babelSetting": { "ignore": [], "disablePlugins": [], "outputPath": "" }
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true
   },
   "compileType": "miniprogram",
   "libVersion": "3.3.0",
-  "appid": "wx0000000000000000",
+  "appid": "wx72edef168e7646bb",
   "projectname": "ring-sdk-guide",
-  "condition": {}
+  "condition": {},
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {}
 }

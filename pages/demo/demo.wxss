@@ -15,4 +15,8 @@
 .actions { margin-top: 30rpx; }
 .section-title { font-size: 26rpx; color: #999; margin: 20rpx 0 12rpx; padding-left: 4rpx; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 16rpx; }
-.btn-row button { flex: 0 0 auto; min-width: 140rpx; }
+.btn-row button { flex: 0 0 auto; min-width: 120rpx; }
+
+/* 自定义指令 */
+.raw-row { display: flex; gap: 12rpx; align-items: center; }
+.raw-input { flex: 1; border: 1rpx solid #ddd; border-radius: 8rpx; padding: 12rpx 16rpx; font-size: 24rpx; font-family: monospace; }
